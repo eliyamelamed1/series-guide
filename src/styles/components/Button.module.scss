@@ -1,0 +1,15 @@
+.button {
+    background: linear-gradient(180deg, #fdc50f 26.71%, #fb982f 99.36%);
+    box-shadow: var(--button-shadow);
+    border-radius: 34px;
+    border: 1px solid var(--primary-color);
+    color: white;
+    padding: 11px 26px 11px 26px;
+    font-size: 16px;
+    width: fit-content;
+    height: fit-content;
+    &:hover {
+        background: white;
+        color: var(--primary-color);
+    }
+}

@@ -1,0 +1,17 @@
+@import '../breakpoints.scss';
+
+.nav {
+    padding-inline: 1rem;
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+    padding-block: 1rem;
+
+    section {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+    }
+}

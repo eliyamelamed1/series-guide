@@ -1,3 +1,5 @@
+@import './breakpoints.scss';
+
 :root {
     --background-color: white;
     --primary-color: #fca61f;
@@ -47,11 +49,15 @@ html {
 }
 
 a {
-    color: white;
+    color: var(--text-primary);
+    font-weight: 600;
     text-decoration: none;
     cursor: pointer;
+
     &:hover {
-        text-decoration: underline;
+        color: var(--primary-hover);
+        text-decoration: unset;
+        cursor: pointer;
     }
 }
 p {
