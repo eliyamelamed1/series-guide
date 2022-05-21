@@ -2,8 +2,9 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 import { ListOfShowsType, endpoints } from '../utils/endpoints';
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect } from 'react';
 
+import LoaderContainer from '../components/LoaderContainer';
 import SearchBar from '../components/SearchBar';
 import ShowCard from '../components/ShowCard';
 import { axiosInstance } from '../utils/axiosInstance';
@@ -51,7 +52,7 @@ const Home = () => {
                     })}
             </section>
             <button onClick={() => fetchNextPage}> Load more </button>
-            {isFetching && !isFetchingNextPage ? 'Fetching...' : null}
+            <LoaderContainer isLoading={isFetching} />
         </div>
     );
 };

@@ -4,6 +4,7 @@ import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-d
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import Home from './pages/Home';
+import LoaderContainer from './components/LoaderContainer';
 import Navbar from './components/Navbar';
 import React from 'react';
 import { ReactQueryDevtools } from 'react-query/devtools';
