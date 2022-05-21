@@ -1,10 +1,10 @@
 export const endpoints = (q?: string | number) => ({
-    popularShows: `/shows?page=1`,
-    multipleSearch: `/search/shows?q=:${q}`,
-    showProfile: `/shows/:${q}`,
+    listOfShows: `/shows?page=1`,
+    search: `/search/shows?q=${q}`,
+    showProfile: `/shows/${q}`,
 });
 
-export type MultipleSearchType = {
+export type SearchType = {
     score: number;
     show: {
         id: number;
@@ -61,7 +61,7 @@ export type MultipleSearchType = {
     };
 };
 
-export type PopularShowsType = {
+export type ListOfShowsType = {
     id: number;
     url: string;
     name: string;

@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import React from 'react';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import { ThemeProvider } from 'next-themes';
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ export default function App() {
                         </Routes>
                     </Router>
                 </ThemeProvider>
+                <ReactQueryDevtools initialIsOpen={false} />
             </QueryClientProvider>
         </>
     );
