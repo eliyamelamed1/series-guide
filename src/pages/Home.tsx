@@ -2,7 +2,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 import { ListOfShowsType, endpoints } from '../utils/endpoints';
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 
 import SearchBar from '../components/SearchBar';
 import ShowCard from '../components/ShowCard';
@@ -11,13 +11,13 @@ import { onBottomScreenScroll } from '../utils/onBottomScreenScroll';
 import styles from '../styles/pages/Home.module.scss';
 import { useInfiniteQuery } from 'react-query';
 
-const fetchListOfShows = async () => {
-    return await axiosInstance.get(endpoints(1).listOfShows);
+const fetchListOfShows = async ({ pageParam = 1 }) => {
+    return await axiosInstance.get(endpoints(pageParam).listOfShows);
 };
 
 const Home = () => {
     const { data, status, hasNextPage, fetchNextPage, isFetching, isFetchingNextPage } = useInfiniteQuery(
-        'fetchListOfShows',
+        ['fetchListOfShows'],
         fetchListOfShows,
         {
             getNextPageParam: (_lastPage, pages) => {
@@ -25,6 +25,7 @@ const Home = () => {
             },
         }
     );
+
     useEffect(() => {
         onBottomScreenScroll({ fetchNextPage, hasNextPage });
     }, [fetchNextPage, hasNextPage]);
@@ -49,7 +50,7 @@ const Home = () => {
                         );
                     })}
             </section>
-
+            <button onClick={() => fetchNextPage}> Load more </button>
             {isFetching && !isFetchingNextPage ? 'Fetching...' : null}
         </div>
     );
