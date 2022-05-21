@@ -1,5 +1,5 @@
 export const endpoints = (q?: string | number) => ({
-    listOfShows: `/shows?page=1`,
+    listOfShows: `/shows?page=${q}`,
     search: `/search/shows?q=${q}`,
     showProfile: `/shows/${q}`,
 });
