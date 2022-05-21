@@ -1,18 +1,44 @@
 .container {
+    position: relative;
+    width: 100%;
+
+    &:hover .image {
+        opacity: 0.3;
+    }
+
+    &:hover .middle {
+        opacity: 1;
+    }
+}
+.rating {
+    span {
+        color: orange;
+    }
+}
+.image {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: 0.5s ease;
+    backface-visibility: hidden;
+}
+
+.middle {
+    transition: 0.5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    padding-top: 1.2rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 16px 2px rgb(0 0 0 / 20%);
-    background-color: var(--primary-color);
-    h2 {
-        margin: 1rem;
-        font-size: 1.2rem;
-        width: 13rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+    gap: 1rem;
+}
+
+.text {
+    color: var(--text-primary);
 }

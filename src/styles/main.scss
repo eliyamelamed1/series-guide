@@ -2,15 +2,15 @@
 
 :root {
     --background-color: white;
-    --primary-color: #fca61f;
-    --text-primary: #242d49;
-    --text-secondary: #788097;
+    --primary-color: #202124;
+    --text-primary: black;
+    --text-secondary: white;
     --button-shadow: 0px 20px 24px 3px rgb(251 161 40 / 60%);
 }
 
 [data-theme='dark'] {
     --background-color: rgb(15, 15, 15);
-    --primary-color: #fca61f;
+    --primary-color: #1d1d1d;
     --text-primary: white;
     --text-secondary: #788097;
     --button-shadow: 0px 20px 24px 3px rgb(251 161 40 / 20%);

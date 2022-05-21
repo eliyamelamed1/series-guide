@@ -51,8 +51,6 @@ const Home = () => {
                         );
                     })}
             </section>
-            <button onClick={() => fetchNextPage}> Load more </button>
-            <LoaderContainer isLoading={isFetching} />
         </div>
     );
 };
