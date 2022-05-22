@@ -1,31 +1,22 @@
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-import { ListOfShowsType, endpoints } from '../utils/endpoints';
 import React, { Fragment, useEffect } from 'react';
 
-import LoaderContainer from '../components/LoaderContainer';
+import { ListOfShowsType } from '../utils/endpoints';
 import SearchBar from '../components/SearchBar';
 import ShowCard from '../components/ShowCard';
-import { axiosInstance } from '../utils/axiosInstance';
+import { fetchListOfShows } from '../queries/fetchListOfShows';
 import { onBottomScreenScroll } from '../utils/onBottomScreenScroll';
 import styles from '../styles/pages/Home.module.scss';
 import { useInfiniteQuery } from 'react-query';
 
-const fetchListOfShows = async ({ pageParam = 1 }) => {
-    return await axiosInstance.get(endpoints(pageParam).listOfShows);
-};
-
 const Home = () => {
-    const { data, status, hasNextPage, fetchNextPage, isFetching, isFetchingNextPage } = useInfiniteQuery(
-        ['fetchListOfShows'],
-        fetchListOfShows,
-        {
-            getNextPageParam: (_lastPage, pages) => {
-                return pages.length + 1;
-            },
-        }
-    );
+    const { data, status, hasNextPage, fetchNextPage } = useInfiniteQuery(['fetchListOfShows'], fetchListOfShows, {
+        getNextPageParam: (_lastPage, pages) => {
+            return pages.length + 1;
+        },
+    });
 
     useEffect(() => {
         onBottomScreenScroll({ fetchNextPage, hasNextPage });

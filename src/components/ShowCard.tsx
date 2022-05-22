@@ -9,7 +9,7 @@ const ShowCard: React.FC<{ show: ListOfShowsType }> = ({ show }) => {
         <div className={styles.container}>
             <img src={show?.image?.medium} alt='Show' className={styles.image} />
             <div className={styles.middle}>
-                <h2 className={styles.text}>{show?.name}</h2>
+                <h1>{show?.name}</h1>
                 <Rating value={(rating && rating / 2) || null} readOnly className={styles.rating} precision={0.5} />
             </div>
         </div>
