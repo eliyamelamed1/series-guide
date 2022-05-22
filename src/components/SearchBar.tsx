@@ -1,22 +1,19 @@
+import { Fragment, useMemo, useState } from 'react';
 import { SearchType, searchForShows } from '../queries/searchForShows';
-import { useEffect, useMemo, useState } from 'react';
 
 import Autocomplete from '@mui/material/Autocomplete';
 import Button from './Button';
+import { CircularProgress } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { debounce } from 'lodash';
 import styles from '../styles/components/SearchBar.module.scss';
 import { useQuery } from 'react-query';
 
 export default function SearchBar() {
-    const [options, setOptions] = useState([]);
     const [searchValue, setSearchValue] = useState('');
-    const { data, status } = useQuery(['fetchListOfShows', searchValue], () => searchForShows({ q: searchValue }));
-    useEffect(() => {
-        if (status === 'success') {
-            setOptions(data);
-        }
-    }, [status, data]);
+    const { data, status, isLoading } = useQuery(['fetchListOfShows', searchValue], () =>
+        searchForShows({ q: searchValue })
+    );
 
     const deb = useMemo(
         () =>
@@ -36,16 +33,24 @@ export default function SearchBar() {
                 freeSolo
                 disableClearable={true}
                 className={styles.container}
-                options={options.map((option: SearchType) => option?.show?.name)}
+                options={status === 'success' ? data.map((option: SearchType) => option?.show?.name) : []}
                 renderInput={(params) => (
                     <TextField
                         onChange={onChange}
                         onSelect={onChange}
                         {...params}
-                        label='Search input'
+                        sx={{ fontSize: 15 }}
+                        placeholder='Search'
                         InputProps={{
                             ...params.InputProps,
-                            type: 'search',
+                            sx: { fontSize: 15 },
+                            className: styles.optionList,
+                            endAdornment: (
+                                <Fragment>
+                                    {isLoading && <CircularProgress style={{ color: 'black' }} size={20} />}
+                                    {/* <button style={{ color: 'black' }}>button that will dispatch the action</button> */}
+                                </Fragment>
+                            ),
                         }}
                     />
                 )}

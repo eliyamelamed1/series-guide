@@ -3,7 +3,7 @@ import { endpoints } from '../utils/endpoints';
 
 export const searchForShows = async ({ q }: { q: string }) => {
     const { data } = await axiosInstance.get(endpoints(q).search);
-    return data;
+    return data as SearchType[];
 };
 export type SearchType = {
     score: number;
