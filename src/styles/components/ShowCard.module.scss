@@ -1,11 +1,18 @@
 .container {
     position: relative;
+    border-radius: 10px;
+
     &:hover .image {
         opacity: 0.2;
     }
 
     &:hover .middle {
         opacity: 1;
+    }
+    img {
+        border-radius: 15px;
+        width: 210px;
+        height: 295px;
     }
 }
 .rating {

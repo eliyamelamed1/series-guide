@@ -19,9 +19,9 @@
     position: absolute;
 }
 
-// [data-theme='light'] .dot {
-//     left: 2px;
-// }
-// [data-theme='dark'] .dot {
-//     right: 2px;
-// }
+[data-theme='light'] .dot {
+    left: 2px;
+}
+[data-theme='dark'] .dot {
+    right: 2px;
+}
