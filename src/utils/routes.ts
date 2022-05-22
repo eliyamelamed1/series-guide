@@ -1,4 +1,7 @@
-export const routes = {
-    home: '/',
-    search: '/search',
+export const routes = (id?: number) => {
+    return {
+        home: '/',
+        search: '/search',
+        showProfile: `/${id}`,
+    };
 };

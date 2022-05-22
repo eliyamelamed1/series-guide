@@ -4,7 +4,7 @@ export const endpoints = (q?: string | number) => ({
     showProfile: `/shows/${q}`,
 });
 
-export type ListOfShowsType = {
+export type ShowsType = {
     id: number;
     url: string;
     name: string;

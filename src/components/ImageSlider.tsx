@@ -8,16 +8,16 @@ import 'swiper/css/scrollbar';
 import { A11y, Navigation, Pagination, Scrollbar } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import { ListOfShowsType } from '../utils/endpoints';
 import React from 'react';
 import ShowCard from './ShowCard';
+import { ShowsType } from '../utils/endpoints';
 import styles from '../styles/components/ImageSlider.module.scss';
 
-const ImageSlider: React.FC<{ shows: ListOfShowsType[] }> = ({ shows }) => {
+const ImageSlider: React.FC<{ shows: ShowsType[] }> = ({ shows }) => {
     return (
         <div className={styles.container}>
             <Swiper modules={[Navigation, Pagination, Scrollbar, A11y]} spaceBetween={50} slidesPerView={7} navigation>
-                {shows.map((show: ListOfShowsType) => {
+                {shows.map((show: ShowsType) => {
                     return (
                         <SwiperSlide>
                             <button

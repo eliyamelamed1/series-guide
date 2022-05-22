@@ -8,8 +8,6 @@ import { useTheme } from 'next-themes';
 
 const Toggle = () => {
     const { theme, setTheme } = useTheme();
-    // const theme = 'dark';
-    // const setTheme = (theme: string) => {};
     const [slide, setSlide] = useState('0%');
 
     useEffect(() => {

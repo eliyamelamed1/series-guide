@@ -6,6 +6,7 @@ import Button from './Button';
 import { CircularProgress } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { debounce } from 'lodash';
+import { routes } from '../utils/routes';
 import styles from '../styles/components/SearchBar.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
@@ -30,7 +31,7 @@ export default function SearchBar() {
 
     const onSubmit = (e: any) => {
         e.preventDefault();
-        navigate('/search', { state: data });
+        navigate(routes().search, { state: data });
     };
 
     return (
