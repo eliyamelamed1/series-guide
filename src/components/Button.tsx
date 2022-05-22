@@ -5,7 +5,7 @@ import styles from '../styles/components/Button.module.scss';
 
 interface PropsType {
     children: ReactNode;
-    onClick?: () => {};
+    onClick?: (e: any) => any;
 }
 
 const Button: React.FC<PropsType> = ({ children, onClick }) => {

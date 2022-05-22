@@ -7,17 +7,18 @@ import { CircularProgress } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { debounce } from 'lodash';
 import styles from '../styles/components/SearchBar.module.scss';
+import { useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
 
 export default function SearchBar() {
+    const navigate = useNavigate();
     const [searchValue, setSearchValue] = useState('');
-    const { data, status, isLoading } = useQuery(['fetchListOfShows', searchValue], () =>
+    const { data, status, isLoading } = useQuery(['searchForShows', searchValue], () =>
         searchForShows({ q: searchValue })
     );
-
     const deb = useMemo(
         () =>
-            debounce((e: any) => {
+            debounce((e) => {
                 setSearchValue(e.target.value);
             }, 300),
         []
@@ -25,6 +26,11 @@ export default function SearchBar() {
 
     const onChange = (e: any) => {
         deb(e);
+    };
+
+    const onSubmit = (e: any) => {
+        e.preventDefault();
+        navigate('/search', { state: data });
     };
 
     return (
@@ -56,7 +62,7 @@ export default function SearchBar() {
                 )}
             />
 
-            <Button> Submit</Button>
+            <Button onClick={onSubmit}> Submit</Button>
         </div>
     );
 }

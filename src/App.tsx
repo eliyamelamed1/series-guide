@@ -4,11 +4,12 @@ import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-d
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import Home from './pages/Home';
-import LoaderContainer from './components/LoaderContainer';
 import Navbar from './components/Navbar';
 import React from 'react';
 import { ReactQueryDevtools } from 'react-query/devtools';
+import Search from './pages/Search';
 import { ThemeProvider } from 'next-themes';
+import { routes } from './utils/routes';
 
 const queryClient = new QueryClient();
 
@@ -20,8 +21,9 @@ export default function App() {
                     <Router>
                         <Navbar />
                         <Routes>
-                            <Route path='/' element={<Home />} />
-                            <Route path='*' element={<Navigate to='/' />} />
+                            <Route path={routes.home} element={<Home />} />
+                            <Route path={routes.search} element={<Search />} />
+                            <Route path='*' element={<Navigate to={routes.home} />} />
                         </Routes>
                     </Router>
                 </ThemeProvider>
