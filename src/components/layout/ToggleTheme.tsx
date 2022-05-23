@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
-
 import DarkModeIcon from '@mui/icons-material/DarkMode';
+import React from 'react';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import { motion } from 'framer-motion';
-import styles from '../styles/components/ToggleTheme.module.scss';
+import styles from '../../styles/components/layout/ToggleTheme.module.scss';
 import { useTheme } from 'next-themes';
 
 const Toggle = () => {

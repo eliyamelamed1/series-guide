@@ -1,6 +1,6 @@
 import React from 'react';
-import SearchBar from '../components/SearchBar';
-import ShowList from '../components/ShowList';
+import SearchBar from '../components/UI/SearchBar';
+import ShowList from '../components/shows/ShowList';
 import styles from '../styles/pages/Home.module.scss';
 
 const Home = () => {

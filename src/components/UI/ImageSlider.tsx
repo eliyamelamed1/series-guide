@@ -9,8 +9,8 @@ import { A11y, Navigation, Pagination, Scrollbar } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import React from 'react';
-import ShowCard from './ShowCard';
-import { ShowsType } from '../utils/endpoints';
+import ShowCard from '../shows/ShowCard';
+import { ShowsType } from '../../utils/endpoints';
 import styles from '../styles/components/ImageSlider.module.scss';
 
 const ImageSlider: React.FC<{ shows: ShowsType[] }> = ({ shows }) => {

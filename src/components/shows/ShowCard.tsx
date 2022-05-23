@@ -1,9 +1,9 @@
 import Rating from '@mui/material/Rating';
 import React from 'react';
-import { ShowsType } from '../utils/endpoints';
+import { ShowsType } from '../../utils/endpoints';
 import { motion } from 'framer-motion';
-import { routes } from '../utils/routes';
-import styles from '../styles/components/ShowCard.module.scss';
+import { routes } from '../../utils/routes';
+import styles from '../../styles/components/shows/ShowCard.module.scss';
 import { useNavigate } from 'react-router-dom';
 
 const ShowCard: React.FC<{ show: ShowsType }> = ({ show }) => {
@@ -17,7 +17,7 @@ const ShowCard: React.FC<{ show: ShowsType }> = ({ show }) => {
             onClick={() => navigate(routes(show.id).showProfile)}
         >
             <img
-                src={show?.image?.medium || require('../assets/No-Photo-Available.jpg')}
+                src={show?.image?.medium || require('../../assets/No-Photo-Available.jpg')}
                 alt='Show'
                 className={styles.image}
             />

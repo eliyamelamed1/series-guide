@@ -1,7 +1,7 @@
 import React from 'react';
 import { SearchType } from '../queries/searchForShows';
-import ShowCard from '../components/ShowCard';
-import styles from '../styles/components/ShowList.module.scss';
+import ShowCard from '../components/shows/ShowCard';
+import styles from '../styles/components/shows/ShowList.module.scss';
 import { useLocation } from 'react-router-dom';
 
 const Search = () => {

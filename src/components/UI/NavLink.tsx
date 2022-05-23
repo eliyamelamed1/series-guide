@@ -1,8 +1,7 @@
-import { Link, NavLink } from 'react-router-dom';
-
+import { NavLink } from 'react-router-dom';
 import React from 'react';
 import { motion } from 'framer-motion';
-import styles from '../styles/components/NavLink.module.scss';
+import styles from '../../styles/components/UI/NavLink.module.scss';
 
 type Children = { children: React.ReactNode };
 

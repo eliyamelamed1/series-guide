@@ -1,13 +1,13 @@
 import { Fragment, useMemo, useState } from 'react';
-import { SearchType, searchForShows } from '../queries/searchForShows';
+import { SearchType, searchForShows } from '../../queries/searchForShows';
 
 import Autocomplete from '@mui/material/Autocomplete';
 import Button from './Button';
 import { CircularProgress } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { debounce } from 'lodash';
-import { routes } from '../utils/routes';
-import styles from '../styles/components/SearchBar.module.scss';
+import { routes } from '../../utils/routes';
+import styles from '../../styles/components/UI/SearchBar.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
 

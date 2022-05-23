@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
 import ShowCard from './ShowCard';
-import { ShowsType } from '../utils/endpoints';
-import { fetchListOfShows } from '../queries/fetchListOfShows';
+import { ShowsType } from '../../utils/endpoints';
+import { fetchListOfShows } from '../../queries/fetchListOfShows';
 import { motion } from 'framer-motion';
-import styles from '../styles/components/ShowList.module.scss';
+import styles from '../../styles/components/shows/ShowList.module.scss';
 import { useQuery } from 'react-query';
 
 const container = {
@@ -31,7 +31,7 @@ const ShowsContainer = () => {
     useEffect(() => {
         const onScroll = function () {
             if (window.innerHeight + window.scrollY < document.body.offsetHeight) return;
-            setCardsToDisplay((prevState: number) => prevState + 5);
+            setCardsToDisplay((prevState: number) => prevState + 7);
         };
         window.addEventListener('scroll', onScroll);
         return () => window.removeEventListener('scroll', onScroll);
