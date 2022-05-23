@@ -1,12 +1,12 @@
-import Rating from '@mui/material/Rating';
+import Rating from '../UI/Rating';
 import React from 'react';
-import { ShowsType } from '../../utils/endpoints';
+import { ShowType } from '../../queries/fetchListOfShows';
 import { motion } from 'framer-motion';
 import { routes } from '../../utils/routes';
 import styles from '../../styles/components/shows/ShowCard.module.scss';
 import { useNavigate } from 'react-router-dom';
 
-const ShowCard: React.FC<{ show: ShowsType }> = ({ show }) => {
+const ShowCard: React.FC<{ show: ShowType }> = ({ show }) => {
     const rating = show?.rating?.average;
     const navigate = useNavigate();
 
@@ -23,7 +23,7 @@ const ShowCard: React.FC<{ show: ShowsType }> = ({ show }) => {
             />
             <div className={styles.middle}>
                 <h1>{show?.name}</h1>
-                <Rating value={(rating && rating / 2) || null} readOnly className={styles.rating} precision={0.5} />
+                <Rating value={(rating && rating / 2) || 0} />
             </div>
         </motion.button>
     );

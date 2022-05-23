@@ -1,10 +1,6 @@
 import { axiosInstance } from '../utils/axiosInstance';
 import { endpoints } from '../utils/endpoints';
 
-export const searchForShows = async ({ q }: { q: string }) => {
-    const { data } = await axiosInstance.get(endpoints(q).search);
-    return data as SearchType[];
-};
 export type SearchType = {
     score: number;
     show: {
@@ -60,4 +56,9 @@ export type SearchType = {
             };
         };
     };
+};
+
+export const searchForShows = async ({ q }: { q: string }) => {
+    const { data } = await axiosInstance.get(endpoints(q).search);
+    return data as SearchType[];
 };

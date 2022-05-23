@@ -10,23 +10,17 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import React from 'react';
 import ShowCard from '../shows/ShowCard';
-import { ShowsType } from '../../utils/endpoints';
+import { ShowType } from '../../queries/fetchListOfShows';
 import styles from '../styles/components/ImageSlider.module.scss';
 
-const ImageSlider: React.FC<{ shows: ShowsType[] }> = ({ shows }) => {
+const ImageSlider: React.FC<{ shows: ShowType[] }> = ({ shows }) => {
     return (
         <div className={styles.container}>
             <Swiper modules={[Navigation, Pagination, Scrollbar, A11y]} spaceBetween={50} slidesPerView={7} navigation>
-                {shows.map((show: ShowsType) => {
+                {shows.map((show: ShowType) => {
                     return (
                         <SwiperSlide>
-                            <button
-                                onClick={() => {
-                                    console.log('132123');
-                                }}
-                            >
-                                <ShowCard show={show} key={show.id} />;
-                            </button>
+                            <ShowCard show={show} key={show.id} />;
                         </SwiperSlide>
                     );
                 })}

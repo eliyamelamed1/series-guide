@@ -1,0 +1,40 @@
+@import '../breakpoints.scss';
+
+.showProfile {
+    margin: 2rem;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    flex-wrap: wrap;
+
+    @include media('>desktop') {
+        justify-content: center;
+        flex-wrap: unset;
+        align-items: center;
+        height: 80vh;
+    }
+}
+.title {
+    font-size: 2rem;
+}
+
+.mainDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.summaryContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 1rem;
+    @include media('>desktop') {
+        gap: 9rem;
+    }
+}
+.additionalDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}

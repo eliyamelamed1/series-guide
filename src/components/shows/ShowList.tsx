@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { ShowType, fetchListOfShows } from '../../queries/fetchListOfShows';
 
 import ShowCard from './ShowCard';
-import { ShowsType } from '../../utils/endpoints';
-import { fetchListOfShows } from '../../queries/fetchListOfShows';
 import { motion } from 'framer-motion';
 import styles from '../../styles/components/shows/ShowList.module.scss';
 import { useQuery } from 'react-query';
@@ -40,7 +39,7 @@ const ShowsContainer = () => {
     return (
         <motion.section className={styles.showList} variants={container} initial='hidden' animate='visible'>
             {status === 'success' &&
-                data.map((show: ShowsType, idx: number) => {
+                data.map((show: ShowType, idx: number) => {
                     if (idx > cardsToDisplay) return null;
                     return (
                         <motion.div variants={singleShow} key={show.id}>

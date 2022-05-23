@@ -15,7 +15,7 @@ const AppRouter = () => {
                 <Routes>
                     <Route path={routes().home} element={<Home />} />
                     <Route path={routes().search} element={<Search />} />
-                    <Route path=':id' element={<ShowProfile />} />
+                    <Route path=':showId' element={<ShowProfile />} />
                     <Route path='*' element={<Navigate to={routes().home} />} />
                 </Routes>
             </Router>
