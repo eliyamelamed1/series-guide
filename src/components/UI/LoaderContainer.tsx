@@ -1,6 +1,6 @@
 import { ClockLoader } from 'react-spinners';
 import React from 'react';
-import styles from '../styles/components/LoaderContainer.module.scss';
+import styles from '../../styles/components/UI/LoaderContainer.module.scss';
 
 interface PropTypes {
     isLoading: boolean;
