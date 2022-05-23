@@ -17,6 +17,7 @@ export default function SearchBar() {
     const { data, status, isLoading } = useQuery(['searchForShows', searchValue], () =>
         searchForShows({ q: searchValue })
     );
+
     const deb = useMemo(
         () =>
             debounce((e) => {

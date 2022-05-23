@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 
 import MainSection from '../components/shows/profile/MainSection';
@@ -13,21 +13,25 @@ const ShowProfile = () => {
     const location = useLocation();
     const [shouldFetch, setShouldFetch] = useState(false);
     const [mutualState, setMutualState] = useState({});
-    const show = useMemo(() => location.state as ShowType, [location.state]);
+    const showData = location.state as ShowType;
 
     useEffect(() => {
-        if (isEmpty(show)) return setShouldFetch(true);
-    }, [show]);
+        if (isEmpty(showData)) return setShouldFetch(true);
+    }, [showData]);
 
     const params = useParams();
-    const { data, status } = useQuery(['fetchShowDetails'], () => fetchShowDetails(params.showId as string), {
-        enabled: shouldFetch,
-    });
+    const { data: fetchedData, status } = useQuery(
+        ['fetchShowDetails'],
+        () => fetchShowDetails(params.showId as string),
+        {
+            enabled: shouldFetch,
+        }
+    );
 
     useEffect(() => {
-        if (shouldFetch && status === 'success') setMutualState(data);
-        else setMutualState(show as ShowType);
-    }, [status, shouldFetch, data, show]);
+        if (shouldFetch && status === 'success') setMutualState(fetchedData);
+        else setMutualState(showData as ShowType);
+    }, [status, shouldFetch, fetchedData, showData]);
 
     return (
         <div className={styles.showProfile}>
