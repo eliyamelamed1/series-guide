@@ -25,7 +25,7 @@ const ShowCard: React.FC<{ show: ShowType }> = ({ show }) => {
             whileHover={{ scale: 1.1 }}
             onClick={() => navigate(routes(show.id).showProfile, { state: show })}
         >
-            <Image image={show?.image?.medium} className={styles.image} />
+            <Image image={show?.image?.medium} />
             <Content />
         </motion.button>
     );

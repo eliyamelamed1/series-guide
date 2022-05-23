@@ -1,8 +1,7 @@
 .container {
     position: relative;
-    // border-radius: 10px;
 
-    &:hover .image {
+    &:hover img {
         opacity: 0.2;
     }
 
@@ -19,7 +18,6 @@
 .image {
     opacity: 1;
     display: block;
-
     height: auto;
     transition: 0.5s ease;
     backface-visibility: hidden;
