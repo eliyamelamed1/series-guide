@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 
+import LoaderContainer from '../components/UI/LoaderContainer';
 import MainSection from '../components/shows/profile/MainSection';
 import { ShowType } from '../queries/fetchListOfShows';
 import SummarySection from '../components/shows/profile/SummarySection';
@@ -29,9 +30,11 @@ const ShowProfile = () => {
     );
 
     useEffect(() => {
-        if (shouldFetch && status === 'success') setMutualState(fetchedData);
+        if (fetchedData && shouldFetch && status === 'success') setMutualState(fetchedData);
         else setMutualState(showData as ShowType);
     }, [status, shouldFetch, fetchedData, showData]);
+
+    if (shouldFetch && status === 'loading') return <LoaderContainer />;
 
     return (
         <div className={styles.showProfile}>

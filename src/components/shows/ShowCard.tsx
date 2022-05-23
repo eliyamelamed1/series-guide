@@ -1,3 +1,4 @@
+import { Image } from '../UI/Image';
 import Rating from '../UI/Rating';
 import React from 'react';
 import { ShowType } from '../../queries/fetchListOfShows';
@@ -10,15 +11,6 @@ const ShowCard: React.FC<{ show: ShowType }> = ({ show }) => {
     const rating = show?.rating?.average;
     const navigate = useNavigate();
 
-    const Image = () => {
-        return (
-            <img
-                src={show?.image?.medium || require('../../assets/No-Photo-Available.jpg')}
-                alt='Show'
-                className={styles.image}
-            />
-        );
-    };
     const Content = () => {
         return (
             <div className={styles.middle}>
@@ -27,14 +19,13 @@ const ShowCard: React.FC<{ show: ShowType }> = ({ show }) => {
             </div>
         );
     };
-
     return (
         <motion.button
             className={styles.container}
             whileHover={{ scale: 1.1 }}
             onClick={() => navigate(routes(show.id).showProfile, { state: show })}
         >
-            <Image />
+            <Image image={show?.image?.medium} className={styles.image} />
             <Content />
         </motion.button>
     );

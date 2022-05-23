@@ -1,6 +1,6 @@
 .container {
     position: relative;
-    border-radius: 10px;
+    // border-radius: 10px;
 
     &:hover .image {
         opacity: 0.2;
@@ -9,12 +9,17 @@
     &:hover .middle {
         opacity: 1;
     }
+    img {
+        border-radius: 15px;
+        width: 210px;
+        height: 295px;
+    }
 }
 
 .image {
     opacity: 1;
     display: block;
-    width: 100%;
+
     height: auto;
     transition: 0.5s ease;
     backface-visibility: hidden;

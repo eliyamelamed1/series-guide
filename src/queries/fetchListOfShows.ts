@@ -1,5 +1,6 @@
 import { axiosInstance } from '../utils/axiosInstance';
 import { endpoints } from '../utils/endpoints';
+import { toast } from 'react-toastify';
 
 export type ShowType = {
     id: number;
@@ -56,6 +57,10 @@ export type ShowType = {
 };
 
 export const fetchListOfShows = async ({ pageParam = 0 }) => {
-    const { data } = await axiosInstance.get(endpoints(pageParam).listOfShows);
-    return data as ShowType[];
+    try {
+        const { data } = await axiosInstance.get(endpoints(pageParam).listOfShows);
+        return data as ShowType[];
+    } catch (err) {
+        toast.error('Something went wrong please try again later');
+    }
 };

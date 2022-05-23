@@ -2,13 +2,10 @@ import { ClockLoader } from 'react-spinners';
 import React from 'react';
 import styles from '../../styles/components/UI/LoaderContainer.module.scss';
 
-interface PropTypes {
-    isLoading: boolean;
-}
-const LoaderContainer = ({ isLoading }: PropTypes) => {
+const LoaderContainer = () => {
     return (
         <div className={styles.loaderContainer}>
-            <ClockLoader size={110} loading={isLoading} css={'loader'} />
+            <ClockLoader size={110} css={'loader'} />
         </div>
     );
 };

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ShowType, fetchListOfShows } from '../../queries/fetchListOfShows';
 
+import LoaderContainer from '../UI/LoaderContainer';
 import ShowCard from './ShowCard';
 import { motion } from 'framer-motion';
 import styles from '../../styles/components/shows/ShowList.module.scss';
@@ -28,18 +29,18 @@ const ShowsContainer = () => {
     const [cardsToDisplay, setCardsToDisplay] = useState(15);
 
     useEffect(() => {
-        const onScroll = function () {
+        window.onscroll = function () {
             if (window.innerHeight + window.scrollY < document.body.offsetHeight) return;
+            console.log(1);
             setCardsToDisplay((prevState: number) => prevState + 7);
         };
-        window.addEventListener('scroll', onScroll);
-        return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
+    if (status === 'loading') return <LoaderContainer />;
     return (
         <motion.section className={styles.showList} variants={container} initial='hidden' animate='visible'>
             {status === 'success' &&
-                data.map((show: ShowType, idx: number) => {
+                data?.map((show: ShowType, idx: number) => {
                     if (idx > cardsToDisplay) return null;
                     return (
                         <motion.div variants={singleShow} key={show.id}>
