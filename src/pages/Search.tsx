@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { SearchType, searchForShows } from '../queries/searchForShows';
+import { SearchType, searchShows } from '../queries/searchShows';
 import { useLocation, useParams } from 'react-router-dom';
 
 import Error from '../components/Error';
@@ -22,7 +22,7 @@ const Search = () => {
     }, [data]);
 
     const params = useParams();
-    const { data: fetchedData, status } = useQuery(['searchForShows'], () => searchForShows(params.q as string), {
+    const { data: fetchedData, status } = useQuery(['searchShows'], () => searchShows(params.q as string), {
         enabled: shouldFetch,
     });
 

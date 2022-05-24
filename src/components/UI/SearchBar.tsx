@@ -1,5 +1,5 @@
 import { Fragment, useMemo, useState } from 'react';
-import { SearchType, searchForShows } from '../../queries/searchForShows';
+import { SearchType, searchShows } from '../../queries/searchShows';
 
 import Autocomplete from '@mui/material/Autocomplete';
 import Button from './Button';
@@ -15,7 +15,7 @@ import { useQuery } from 'react-query';
 export default function SearchBar() {
     const navigate = useNavigate();
     const [searchValue, setSearchValue] = useState('');
-    const { data, status, isLoading } = useQuery(['searchForShows', searchValue], () => searchForShows(searchValue));
+    const { data, status, isLoading } = useQuery(['searchShows', searchValue], () => searchShows(searchValue));
 
     const deb = useMemo(
         () =>
