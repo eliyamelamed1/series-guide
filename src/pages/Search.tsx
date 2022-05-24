@@ -5,27 +5,10 @@ import { useLocation, useParams } from 'react-router-dom';
 import Error from '../components/Error';
 import LoaderContainer from '../components/UI/LoaderContainer';
 import ShowCard from '../components/shows/ShowCard';
+import { animations } from '../utils/animations';
 import { motion } from 'framer-motion';
 import styles from '../styles/components/shows/ShowList.module.scss';
 import { useQuery } from 'react-query';
-
-const container = {
-    hidden: { opacity: 1 },
-    visible: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.2,
-        },
-    },
-};
-
-const singleShow = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-        opacity: 1,
-        y: 0,
-    },
-};
 
 const Search = () => {
     const location = useLocation();
@@ -52,11 +35,11 @@ const Search = () => {
     if (status === 'error') return <Error />;
 
     return (
-        <motion.section className={styles.showList} variants={container} initial='hidden' animate='visible'>
+        <motion.section className={styles.showList} variants={animations.container} initial='hidden' animate='visible'>
             {mutualState.map((obj: SearchType) => {
-                const show = obj?.show;
+                const { show } = obj;
                 return (
-                    <motion.div key={show.id} variants={singleShow}>
+                    <motion.div key={show?.id} variants={animations.item}>
                         <ShowCard show={show} />
                     </motion.div>
                 );

@@ -6,5 +6,5 @@ interface PropTypes {
 }
 
 export const Image: React.FC<PropTypes> = ({ image, className = '' }) => {
-    return <img src={image || require('../../assets/No-Photo-Available.jpg')} alt='Show' />;
+    return <img src={image || require('../../assets/No-Photo-Available.jpg')} className={className} alt='Show' />;
 };

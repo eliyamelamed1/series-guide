@@ -8,7 +8,7 @@ import styles from '../../styles/components/shows/ShowCard.module.scss';
 import { useNavigate } from 'react-router-dom';
 
 const ShowCard: React.FC<{ show: ShowType }> = ({ show }) => {
-    const rating = show?.rating?.average;
+    const { average: rating } = show.rating;
     const navigate = useNavigate();
 
     const Content = () => {
