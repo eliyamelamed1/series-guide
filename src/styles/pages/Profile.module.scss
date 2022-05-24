@@ -6,12 +6,12 @@
     flex-direction: row;
     gap: 2rem;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 
     @include media('>desktop') {
         flex-wrap: unset;
         display: flex;
-        justify-content: center;
-        align-items: center;
         height: 80vh;
     }
 }
@@ -23,6 +23,7 @@
 .mainDetails {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 1rem;
 }
 
@@ -31,8 +32,10 @@
     flex-direction: column;
     text-align: left;
     gap: 1rem;
-    position: relative;
-    top: -45px;
+    @include media('>desktop') {
+        position: relative;
+        top: -45px;
+    }
 }
 .additionalDetails {
     display: flex;

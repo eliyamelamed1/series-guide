@@ -8,7 +8,7 @@ import { ShowType } from '../queries/fetchListOfShows';
 import SummarySection from '../components/shows/profile/SummarySection';
 import { fetchShowDetails } from '../queries/fetchShowDetails';
 import { isEmpty } from 'lodash';
-import styles from '../styles/pages/ShowProfile.module.scss';
+import styles from '../styles/pages/Profile.module.scss';
 import { useQuery } from 'react-query';
 
 const ShowProfile = () => {

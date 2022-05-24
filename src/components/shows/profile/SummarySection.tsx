@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 
 import { ShowType } from '../../../queries/fetchListOfShows';
-import styles from '../../../styles/pages/ShowProfile.module.scss';
+import styles from '../../../styles/pages/Profile.module.scss';
 
 const removeHtmlTags = (str: string) => {
     return str.replaceAll(/<.*?>/g, '');

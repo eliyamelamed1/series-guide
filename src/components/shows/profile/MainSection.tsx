@@ -2,7 +2,7 @@ import { Image } from '../../UI/Image';
 import Rating from '../../UI/Rating';
 import React from 'react';
 import { ShowType } from '../../../queries/fetchListOfShows';
-import styles from '../../../styles/pages/ShowProfile.module.scss';
+import styles from '../../../styles/pages/Profile.module.scss';
 
 const MainSection: React.FC<{ show: ShowType }> = ({ show }) => {
     return (
