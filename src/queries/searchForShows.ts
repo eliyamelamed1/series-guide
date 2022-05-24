@@ -1,6 +1,5 @@
 import { axiosInstance } from '../utils/axiosInstance';
 import { endpoints } from '../utils/endpoints';
-import { toast } from 'react-toastify';
 
 export type SearchType = {
     score: number;
@@ -60,10 +59,6 @@ export type SearchType = {
 };
 
 export const searchForShows = async ({ q }: { q: string }) => {
-    try {
-        const { data } = await axiosInstance.get(endpoints(q).search);
-        return data as SearchType[];
-    } catch (err) {
-        toast.error('Something went wrong please try again later');
-    }
+    const { data } = await axiosInstance.get(endpoints(q).search);
+    return data as SearchType[];
 };

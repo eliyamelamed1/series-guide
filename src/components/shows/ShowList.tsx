@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ShowType, fetchListOfShows } from '../../queries/fetchListOfShows';
 
+import Error from '../Error';
 import LoaderContainer from '../UI/LoaderContainer';
 import ShowCard from './ShowCard';
 import { motion } from 'framer-motion';
@@ -42,6 +43,7 @@ const ShowsContainer = () => {
     }, []);
 
     if (status === 'loading') return <LoaderContainer />;
+    if (status === 'error') return <Error />;
     return (
         <motion.section className={styles.showList} variants={container} initial='hidden' animate='visible'>
             {status === 'success' &&

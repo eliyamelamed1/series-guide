@@ -41,7 +41,7 @@ export default function SearchBar() {
                 freeSolo
                 disableClearable={true}
                 className={styles.container}
-                options={status === 'success' && data ? data?.map((option: SearchType) => option?.show?.name) : []}
+                options={status === 'success' ? data?.map((option: SearchType) => option?.show?.name) : []}
                 renderInput={(params) => (
                     <TextField
                         onChange={onChange}
