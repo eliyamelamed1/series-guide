@@ -31,11 +31,11 @@ const Search = () => {
     const location = useLocation();
     const data = useMemo(() => location.state || [], [location.state]) as SearchType[] | [];
     const [shouldFetch, setShouldFetch] = useState(false);
-    const [mutualData, setMutualData] = useState([]);
+    const [mutualState, setMutualState] = useState<SearchType[]>([]);
 
     useEffect(() => {
-        if (!data.length) setShouldFetch(true);
-        else setShouldFetch(false);
+        if (!data.length) return setShouldFetch(true);
+        return setShouldFetch(false);
     }, [data]);
 
     const params = useParams();
@@ -44,8 +44,8 @@ const Search = () => {
     });
 
     useEffect(() => {
-        if (shouldFetch && status === 'success') setMutualData(fetchedData as any);
-        else setMutualData(data as any);
+        if (shouldFetch && status === 'success') setMutualState(fetchedData as SearchType[]);
+        else setMutualState(data as SearchType[]);
     }, [status, shouldFetch, fetchedData, data]);
 
     if (status === 'loading') return <LoaderContainer />;
@@ -53,7 +53,7 @@ const Search = () => {
 
     return (
         <motion.section className={styles.showList} variants={container} initial='hidden' animate='visible'>
-            {mutualData.map((obj: SearchType) => {
+            {mutualState.map((obj: SearchType) => {
                 const show = obj?.show;
                 return (
                     <motion.div key={show.id} variants={singleShow}>
