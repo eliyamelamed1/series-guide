@@ -12,7 +12,7 @@ import { useQuery } from 'react-query';
 
 const ShowsContainer = () => {
     const { data, status } = useQuery(['fetchListOfShows'], fetchListOfShows);
-    const [cardsToDisplay, setCardsToDisplay] = useState(15);
+    const [cardsToDisplay, setCardsToDisplay] = useState(30);
 
     useEffect(() => {
         window.onscroll = function () {

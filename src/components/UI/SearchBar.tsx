@@ -8,6 +8,7 @@ import TextField from '@mui/material/TextField';
 import { debounce } from 'lodash';
 import { routes } from '../../utils/routes';
 import styles from '../../styles/components/UI/SearchBar.module.scss';
+import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
 
@@ -30,6 +31,7 @@ export default function SearchBar() {
 
     const onSubmit = (e: any) => {
         e.preventDefault();
+        if (!searchValue.length) return toast.info('Please enter text');
         navigate(routes(searchValue).search, { state: data });
     };
 
