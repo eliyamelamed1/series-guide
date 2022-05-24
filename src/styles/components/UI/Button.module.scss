@@ -1,12 +1,16 @@
 .button {
-    background: linear-gradient(180deg, #fdc50f 26.71%, #fb982f 99.36%);
-    box-shadow: var(--button-shadow);
-    border-radius: 34px;
+    // background: linear-gradient(180deg, #fdc50f 26.71%, #fb982f 99.36%);
+    // box-shadow: var(--button-shadow);
+    background-color: var(--primary-color);
+
+    border-radius: 5px;
     color: white;
-    padding: 11px 26px 11px 26px;
+    padding: 18px 30px;
     font-size: 16px;
     width: fit-content;
     height: fit-content;
+    color: var(--text-primary);
+    font-weight: 600;
 
     &:hover {
         background: white;
