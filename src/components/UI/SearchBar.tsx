@@ -31,7 +31,7 @@ export default function SearchBar() {
 
     const onSubmit = (e: any) => {
         e.preventDefault();
-        if (!searchValue.length) return toast.info('Please enter text');
+        if (!searchValue.trim().length) return toast.info('Please enter text');
         navigate(routes(searchValue).search, { state: data });
     };
 
