@@ -12,7 +12,7 @@ const Button: React.FC<PropsType> = ({ children, onClick }) => {
     return (
         <motion.button
             whileHover={{
-                scale: 1.2,
+                scale: 1.05,
             }}
             className={styles.button}
             onClick={onClick}
