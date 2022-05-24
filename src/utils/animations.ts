@@ -4,7 +4,7 @@ export const animations = {
         visible: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.01,
+                staggerChildren: 0.07,
             },
         },
     },
