@@ -58,7 +58,7 @@ export type SearchType = {
     };
 };
 
-export const searchForShows = async ({ q }: { q: string }) => {
+export const searchForShows = async (q: string) => {
     const { data } = await axiosInstance.get(endpoints(q).search);
     return data as SearchType[];
 };

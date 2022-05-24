@@ -31,12 +31,6 @@ const ShowsContainer = () => {
 
     useEffect(() => {
         window.onscroll = function () {
-            console.log('innerHeight' + window.innerHeight);
-            console.log('scrollY' + window.scrollY);
-            console.log('offSetHeight' + document.body.offsetHeight);
-
-            console.log(window.innerHeight + window.scrollY, document.body.offsetHeight);
-
             if (window.innerHeight + window.scrollY < document.body.offsetHeight) return;
             setCardsToDisplay((prevState: number) => prevState + 7);
         };

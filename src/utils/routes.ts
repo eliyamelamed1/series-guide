@@ -1,7 +1,7 @@
-export const routes = (id?: number) => {
+export const routes = (q?: number | string) => {
     return {
         home: '/',
-        search: '/search',
-        showProfile: `/${id}`,
+        search: `/search/${q}`,
+        showProfile: `/${q}`,
     };
 };

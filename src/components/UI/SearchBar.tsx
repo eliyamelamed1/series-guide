@@ -14,9 +14,7 @@ import { useQuery } from 'react-query';
 export default function SearchBar() {
     const navigate = useNavigate();
     const [searchValue, setSearchValue] = useState('');
-    const { data, status, isLoading } = useQuery(['searchForShows', searchValue], () =>
-        searchForShows({ q: searchValue })
-    );
+    const { data, status, isLoading } = useQuery(['searchForShows', searchValue], () => searchForShows(searchValue));
 
     const deb = useMemo(
         () =>
@@ -32,7 +30,7 @@ export default function SearchBar() {
 
     const onSubmit = (e: any) => {
         e.preventDefault();
-        navigate(routes().search, { state: data });
+        navigate(routes(searchValue).search, { state: data });
     };
 
     return (

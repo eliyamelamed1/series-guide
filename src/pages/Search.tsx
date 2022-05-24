@@ -1,9 +1,13 @@
-import React from 'react';
-import { SearchType } from '../queries/searchForShows';
+import React, { useEffect, useMemo, useState } from 'react';
+import { SearchType, searchForShows } from '../queries/searchForShows';
+import { useLocation, useParams } from 'react-router-dom';
+
+import Error from '../components/Error';
+import LoaderContainer from '../components/UI/LoaderContainer';
 import ShowCard from '../components/shows/ShowCard';
 import { motion } from 'framer-motion';
 import styles from '../styles/components/shows/ShowList.module.scss';
-import { useLocation } from 'react-router-dom';
+import { useQuery } from 'react-query';
 
 const container = {
     hidden: { opacity: 1 },
@@ -25,13 +29,31 @@ const singleShow = {
 
 const Search = () => {
     const location = useLocation();
-    const data: any = location.state || [];
+    const data = useMemo(() => location.state || [], [location.state]) as SearchType[] | [];
+    const [shouldFetch, setShouldFetch] = useState(false);
+    const [mutualData, setMutualData] = useState([]);
 
-    if (!data.length) return <div>No results Try Again</div>;
+    useEffect(() => {
+        if (!data.length) setShouldFetch(true);
+        else setShouldFetch(false);
+    }, [data]);
+
+    const params = useParams();
+    const { data: fetchedData, status } = useQuery(['searchForShows'], () => searchForShows(params.q as string), {
+        enabled: shouldFetch,
+    });
+
+    useEffect(() => {
+        if (shouldFetch && status === 'success') setMutualData(fetchedData as any);
+        else setMutualData(data as any);
+    }, [status, shouldFetch, fetchedData, data]);
+
+    if (status === 'loading') return <LoaderContainer />;
+    if (status === 'error') return <Error />;
 
     return (
         <motion.section className={styles.showList} variants={container} initial='hidden' animate='visible'>
-            {data.map((obj: SearchType) => {
+            {mutualData.map((obj: SearchType) => {
                 const show = obj?.show;
                 return (
                     <motion.div key={show.id} variants={singleShow}>

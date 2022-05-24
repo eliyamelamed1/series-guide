@@ -14,7 +14,7 @@ const AppRouter = () => {
                 <Navbar />
                 <Routes>
                     <Route path={routes().home} element={<Home />} />
-                    <Route path={routes().search} element={<Search />} />
+                    <Route path='/search/:q' element={<Search />} />
                     <Route path=':showId' element={<Profile />} />
                     <Route path='*' element={<Navigate to={routes().home} />} />
                 </Routes>
