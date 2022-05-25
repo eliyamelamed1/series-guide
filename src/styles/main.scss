@@ -6,6 +6,8 @@
     --text-primary: black;
     --text-secondary: white;
     --button-shadow: 0px 20px 24px 3px rgb(251 161 40 / 60%);
+    --scrollbarBG: #cfd8dc;
+    --thumbBG: #90a4ae;
 }
 
 [data-theme='dark'] {
@@ -14,6 +16,8 @@
     --text-primary: white;
     --text-secondary: #000000;
     --button-shadow: 0px 20px 24px 3px rgb(251 161 40 / 20%);
+    --scrollbarBG: hsl(198, 16%, 20%);
+    --thumbBG: #90a4ae;
 }
 
 h1 {
@@ -87,4 +91,20 @@ img {
 
 *:focus {
     outline: none;
+}
+
+body {
+    scrollbar-width: thin;
+    scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+    &::-webkit-scrollbar {
+        width: 11px;
+    }
+    &::-webkit-scrollbar-track {
+        background: var(--scrollbarBG);
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--thumbBG);
+        border-radius: 6px;
+        border: 3px solid var(--scrollbarBG);
+    }
 }
